@@ -2,8 +2,8 @@
  *  06/06/2021     Initial version
  * ---------------------------------------------------------------------------*/
 
-#ifndef RINGBUFFER_RINGBUFFER_H
-#define RINGBUFFER_RINGBUFFER_H
+#ifndef RINGBUFFER_H
+#define RINGBUFFER_H
 
 #include "Block.h"
 
