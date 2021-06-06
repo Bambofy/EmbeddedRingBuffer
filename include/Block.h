@@ -5,6 +5,8 @@
 #ifndef RINGBUFFER_BLOCK_H
 #define RINGBUFFER_BLOCK_H
 
+#include <stddef.h>
+
 /**
  * @brief        A block represents a continuous section
  *               of the ring buffer.
@@ -14,7 +16,7 @@ template<class T>
 class Block
 {
 public:
-    Block() : start(0), length(0)
+    Block() : start(NULL), length(0)
     {
     }
 
