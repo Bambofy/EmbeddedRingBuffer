@@ -1,5 +1,5 @@
 # EmbeddedRingBuffer
-This is a ring buffer that is designed to work on embedded devices.
+This is a header only ring buffer that is designed to work on embedded devices.
 
 It does not use malloc/free since the size is defined as a template parameter. It is written in plain C++98 with no special features used.
 

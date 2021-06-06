@@ -31,6 +31,5 @@ int main()
 		std::cout << block.At(i) << std::endl;
 	}
 
-
 	return 0;
 }
