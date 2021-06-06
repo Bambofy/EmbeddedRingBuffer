@@ -7,6 +7,8 @@
 
 #include "Block.h"
 
+#include <string.h>
+
 /**
  * @brief            A ring buffer is a FIFO structure that can be used to
  *                     spool data between devices.
