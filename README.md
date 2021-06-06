@@ -47,10 +47,13 @@ Without autoskip.
 ```
 RingBuffer<100, int> buffer;
 Block<int> block;
+bool writing = false;
 
 void SD_WriteCompleted()
 {
     buffer.Skip(block.Length()); /* Manually skip the buffer to prevent corruption */
+    
+    writing = false;
 }
 
 void ISR()
@@ -64,9 +67,13 @@ int main()
 {
     while (true)
     {
+        if (writing) continue;
+        
         /* Read a block */
         block = buffer.Read(100);
 
+        writing = true;
+        
         SD.write(block.Start(), block.Length()); /* non blocking mode */
     }
 
