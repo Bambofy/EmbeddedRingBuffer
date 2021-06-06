@@ -29,6 +29,7 @@ int main(int argc, char** argv)
     
     /* Read 20 ints block */
     block = buffer.Read(20);
+    buffer.Skip(block.Length());
     
     /* Write 10 ints */
     for (int i = 0; i < 10; i++)
@@ -38,6 +39,7 @@ int main(int argc, char** argv)
     
     /* Read 10 ints block */
     block = buffer.Read(10);
+    buffer.Skip(block.Length());
     
     /* Print out the block */
     for (int i = 0; i < block.Length(); i++)

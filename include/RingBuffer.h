@@ -90,7 +90,7 @@ public:
      * @return                       A block of items containing the maximum
      *                               number the buffer can provide at this time.
      */
-    Block<T> Read(unsigned int num_reads_requested, bool skip = true)
+    Block<T> Read(unsigned int num_reads_requested)
     {
         bool bridges_zero;
         Block<T> block;
@@ -118,11 +118,6 @@ public:
                  */
                 block.SetStart(&(data[read_position]));
                 block.SetLength(reads_to_end);
-
-                if (skip)
-                {
-                    read_position = (read_position + reads_to_end) % LENGTH;
-                }
             }
             else
             {
@@ -132,12 +127,6 @@ public:
                  */
                 block.SetStart(&(data[read_position]));
                 block.SetLength(num_reads_requested);
-
-                if (skip)
-                {
-                    read_position =
-                            (read_position + num_reads_requested) % LENGTH;
-                }
             }
         }
         else
@@ -173,11 +162,6 @@ public:
 
             block.SetStart(&(data[read_position]));
             block.SetLength(max_num_reads);
-
-            if (skip)
-            {
-                read_position = (read_position + max_num_reads) % LENGTH;
-            }
         }
 
         return block;

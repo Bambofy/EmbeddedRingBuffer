@@ -27,6 +27,7 @@ int main(int argc, char** argv)
     
     /* Read a block */
     block = buffer.Read(20);
+    buffer.Skip(block.Length());
     
     /* Print out the block */
     for (int i = 0; i < block.Length(); i++)
