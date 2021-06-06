@@ -1,15 +1,17 @@
-# EmbeddedRingBuffer
+# Embedded Ring Buffer
 This is a header only ring buffer that is designed to work on embedded devices.
 
 There are two objects, RingBuffer and Block. The block represents a set of items in the ringbuffer. You can write single items to the ring buffer and read many at once. 
 It was designed to handle ISR routines and non-blocking devices therefore bytes can be wrote in an interrupt handler and read in large chunks to output to slower medium like SD cards. 
-To use this in an ISR setting, the Skip parameter of Read() must be set to false, then you must manually skip it the number of reads the block contains once you are finished with the block, this is so that the writing does not corrupt the blocks data as it is being used.
 
 It does not use malloc/free since the size is defined as a template parameter and is written in plain C++98 with no special features used.
 
 ## How to use it.
 
-With autoskip enabled.
+Once a block has been used you must Skip() the buffer the number of reads you made, this is so that writing to the buffer does not corrupt the blocks data as it is being used.
+
+
+Without ISR
 ```
 int main()
 {
@@ -24,6 +26,7 @@ int main()
 
     /* Read a block */
     block = buffer.Read(100);
+    buffer.Skip(block.Length());
 
     /* Print out the block */
     for (int i = 0; i < block.Length(); i++)
@@ -33,6 +36,7 @@ int main()
 
     /* Read another block */
     block = buffer.Read(1000);
+    buffer.Skip(block.Length());
 
     /* Print out the block */
     for (int i = 0; i < block.Length(); i++)
@@ -45,7 +49,7 @@ int main()
 }
 ```
 
-Without autoskip.
+With ISR.
 ```
 RingBuffer<100, int> buffer;
 Block<int> block;
