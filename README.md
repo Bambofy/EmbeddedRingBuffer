@@ -70,7 +70,7 @@ int main()
         if (writing) continue;
         
         /* Read a block */
-        block = buffer.Read(100);
+        block = buffer.Read(100, false); /* NOTE: here the second parameter disables the automatic skipping */
 
         writing = true;
         
