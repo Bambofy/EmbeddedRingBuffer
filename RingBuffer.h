@@ -201,8 +201,8 @@ public:
     }
 
 private:
-    unsigned int read_position;
-    unsigned int write_position;
+    volatile unsigned int read_position;
+    volatile unsigned int write_position;
 
     T data[LENGTH];
 
