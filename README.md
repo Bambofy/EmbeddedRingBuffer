@@ -104,7 +104,11 @@ This may sound unrealistic but this was designed for SD cards that write extreme
 In practice the ring buffers write position will never exceed far from the read position since the SD card is emptying it constantly. You must calculate the timing of your input data and output data carefully for the buffer.
 
 ## References
-  - http://www.mathcs.emory.edu/~cheung/Courses/171/Syllabus/8-List/array-queue2.html
+- http://www.mathcs.emory.edu/~cheung/Courses/171/Syllabus/8-List/array-queue2.html
+
+## Alternatives
+- Embedded Template Library (ETL) https://www.etlcpp.com/circular_buffer.html
+- Ring-Buffer https://github.com/AndersKaloer/Ring-Buffer
 
 ## Todo
   - Test the buffer thoroughly to debug.
