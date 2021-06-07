@@ -81,11 +81,9 @@ public:
 
     /**
      * @brief                        Retrieve a continuous block of
-     *                               valid buffered data.
+     *                               valid buffered data. Must call Skip()
+     *                               on the block's length.
      * @param num_reads_requested    How many reads are required.
-     * @param skip                   Whether to increment the read position
-     *                               automatically, (false for manual skip
-     *                               control)
      * @return                       A block of items containing the maximum
      *                               number the buffer can provide at this time.
      */
