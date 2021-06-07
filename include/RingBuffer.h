@@ -44,7 +44,6 @@ public:
 
     ~RingBuffer()
     {
-        memset(data, 0, LENGTH);
     }
 
     /**
