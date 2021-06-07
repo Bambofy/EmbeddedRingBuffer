@@ -1,5 +1,6 @@
 # Embedded Ring Buffer
-This is a header only ring buffer that is designed to work on embedded devices.
+This is a header only ring buffer that is designed to work on embedded 
+devices, it is able to handle non-blocking ISR spooling.
 
 There are two objects, RingBuffer and Block. The block represents a set of items in the ringbuffer. You can write single items to the ring buffer and read many at once. 
 It was designed to handle ISR routines and non-blocking devices therefore bytes can be wrote in an interrupt handler and read in large chunks to output to slower medium like SD cards. 
