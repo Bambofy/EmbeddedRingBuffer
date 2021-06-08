@@ -173,14 +173,45 @@ public:
         read_position = (read_position + num_reads) % LENGTH;
     }
 
-    bool Overrun()
-    {
-        return overrun_flag;
-    }
-
+    /**
+     * @brief    The total size of the ring buffer including the full position.
+     *
+     */
     unsigned int Length()
     {
         return LENGTH;
+    }
+
+    /**
+     * @brief    Returns the number of reads available.
+     *
+     */
+    unsigned int Available()
+    {
+        bool bridges_zero;
+        unsigned available_reads;
+
+        bridges_zero = read_position > write_position;
+        available_reads = 0;
+
+        if (bridges_zero)
+        {
+            /* Add the number of reads to zero, and number of reads from 0 to the write cursor */
+            unsigned int num_reads_to_zero;
+            unsigned int num_reads_to_write_position;
+            
+            num_reads_to_zero = LENGTH - read_position;
+            num_reads_to_write_position = write_position;
+
+            available_reads = num_reads_to_zero + num_reads_to_write_position;
+        }
+        else
+        {
+            /* The number of available reads is between the write position and the read position. */
+            available_reads = write_position - read_position;
+        }
+
+        return available_reads;
     }
 
 private:
