@@ -81,8 +81,7 @@ public:
 
     /**
      * @brief                        Retrieve a continuous block of
-     *                               valid buffered data. Must call Skip()
-     *                               on the block's length.
+     *                               valid buffered data.
      * @param num_reads_requested    How many reads are required.
      * @return                       A block of items containing the maximum
      *                               number the buffer can provide at this time.
@@ -171,6 +170,11 @@ public:
     void Skip(unsigned int num_reads)
     {
         read_position = (read_position + num_reads) % LENGTH;
+    }
+
+    bool Overrun()
+    {
+        return overrun_flag;
     }
 
     /**

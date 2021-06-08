@@ -69,6 +69,12 @@ public:
     }
 
 
+    size_t ElementSize()
+    {
+        return sizeof(T);
+    }
+
+
 private:
     T* start;
 
