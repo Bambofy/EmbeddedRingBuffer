@@ -160,6 +160,8 @@ public:
             block.SetLength(max_num_reads);
         }
 
+        read_position = (read_position + num_reads_requested) % LENGTH;
+
         return block;
     }
 
