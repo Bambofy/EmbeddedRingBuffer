@@ -171,7 +171,11 @@ public:
      */
     void Skip(unsigned int num_reads)
     {
-        read_position = (read_position + num_reads) % LENGTH;
+    	if ((read_position + num_reads) % LENGTH <= write_position){
+    		read_position = (read_position + num_reads) % LENGTH;
+    	}else{
+    		read_position = write_position;
+    	}
     }
 
     bool Overrun()
